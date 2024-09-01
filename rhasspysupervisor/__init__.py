@@ -566,8 +566,12 @@ def get_wake(
 
         sensitivity = profile.get("wake.porcupine.sensitivity", "0.5")
 
+        api_key = profile.get("wake.porcupine.api_key", "x")
+        
         wake_command = [
             "rhasspy-wake-porcupine-hermes",
+            "--access-key",
+            shlex.quote(str(api_key)),
             "--keyword",
             shlex.quote(str(keyword)),
             "--sensitivity",
